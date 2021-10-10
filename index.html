@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <title>摄像头演示页</title>
+        <meta name="description" content="Our first page">
+        <meta name="keywords" content="html tutorial template">
+        <script src="html5-qrcode.min.js"></script>
+    </head>
+    <body>
+        <div style="width: 100%" id="reader"></div>
+        <div id="result">
+        </div>
+
+        <script>
+            function onScanSuccess(decodedText, decodedResult) {
+                // Handle on success condition with the decoded text or result.
+                console.log(`Scan result: ${decodedText}`);
+                document.querySelector("#result").innerText = decodedText;
+                html5QrcodeScanner.clear();
+                // ^ this will stop the scanner (video feed) and clear the scan area.
+            }
+            function onScanError(errorMessage) {
+                // handle on error condition, with error message
+                alert("识别错误");
+            }
+            var html5QrcodeScanner = new Html5QrcodeScanner(
+	                "reader", { fps: 10, qrbox: 250 });
+            html5QrcodeScanner.render(onScanSuccess, onScanError);
+        </script>
+    </body>
+</html>
