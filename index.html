@@ -25,7 +25,7 @@
                 //alert("识别错误");
             }
             var html5QrcodeScanner = new Html5QrcodeScanner(
-	                "reader", { fps: 10, qrbox: 250 });
+	                "reader", { fps: 10, qrbox: 250, rememberLastUsedCamera: true });
             html5QrcodeScanner.render(onScanSuccess, onScanError);
         </script>
     </body>
